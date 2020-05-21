@@ -91,6 +91,8 @@ class Car {
       this.tank = distance / this.milesPerGallon;
     }
     else {
+      this.tank = 0;
+      this.fill();
       return `I ran out of fuel at ${this.odometer} miles!`;
     }
   }
@@ -138,6 +140,14 @@ class Instructor extends Lambdasian{
   constructor(atty) {
     super(atty);
     this.specialty = atty.specialty;
+    this.favLanguage = atty.favLanguage;
+    this.catchPhrase = atty.catchPhrase;
+  }
+  demo(subject) {
+    return `Today we are learning about ${subject}`;
+  }
+  grade(student, subject) {
+    return `${student.name} receives a perfect score on ${subject}`
   }
 }
 
@@ -156,8 +166,22 @@ class Instructor extends Lambdasian{
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-
+class Student extends Lambdasian{
+  constructor(atty) {
+    super(atty);
+    this.previousBackground = atty.previousBackground;
+    this.className = atty.className;
+    this.favSubjects = atty.favSubjects;
+  }
+  listSubjects() {
+    return `Loving ${this.favSubjects}`;
+  }
+  PRAssignment(subject) {
+    return `${this.name} has submitted a PR for ${subject}`;
+  }
+  sprintChallenge(subject) {
+    return `${this.name} had begun sprint challenge on ${subject}`;
+  }
 }
 
 /*
@@ -173,8 +197,18 @@ class Student {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
+class ProjectManager extends Instructor{
+  constructor(atty) {
+    super(atty);
+    this.gradClassName = atty.gradClassName;
+    this.favInstructor = atty.favInstructor;
+  }
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+  }
+  debugsCode(student, subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
 }
 
 /*
